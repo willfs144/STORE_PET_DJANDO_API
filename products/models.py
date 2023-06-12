@@ -6,3 +6,6 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=8, decimal_places=2, default=0.0)#
     stock = models.IntegerField()
     create_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self) -> str:
+        return self.title

@@ -10,5 +10,6 @@ from products.views import ProductListView
 urlpatterns = [
     path('',ProductListView.as_view(), name='index'),
     path('admin/', admin.site.urls),
-    path('productos/', include('products.urls'))
+    path('productos/', include('products.urls')),
+    path('categorias/', include('categories.urls'))
 ]

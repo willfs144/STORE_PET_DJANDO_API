@@ -1,7 +1,7 @@
 from typing import Any, Dict
 from django.shortcuts import render
 
-from .models import Product
+from products.models import Product
 
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
@@ -26,6 +26,8 @@ class ProductListView(ListView):
 class ProductDetailView(DetailView):
     model = Product
     template_name = 'products/product.html'
+
+
 
 #Listado API
 #@permission_classes((AllowAny, ))

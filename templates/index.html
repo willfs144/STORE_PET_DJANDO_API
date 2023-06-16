@@ -1,24 +1,7 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pet shop</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-
-    <!-- font awesome cdn link  -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-
-    <!-- custom css file link  -->
-    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
-  </head>
-  <body>
-    <!-- header section starts  -->
+{% extends 'base.html' %}
+{% load static %}  
+{% block content %}
+      <!-- header section starts  -->
 
     <header class="header">
       <a href="#" class="logo"> <i class="fas fa-paw"></i> Tienda </a>
@@ -141,30 +124,51 @@
 
     <!-- dog and cat food banner section ends -->
 
-    
+    <!-- Inicio lista de productos -->
+
+    <div class="row ajustar-texto">
+			<div class="col">
+				<h1>{{message}}</h1>
+				<ul class="list-group">
+					{# Listar productos #}
+					{% for product in products %}
+						<li class="list-group-item">
+							{{ product.title }}						
+							
+                            <span class="text-success">$ {{ product.price}}</span>
+						</li>
+					{% endfor %}
+				</ul>			
+			</div>
+		</div>
+
+    <!-- finalizar lista de productos -->
+
 
     <!-- shop section starts  -->
 
     <section class="shop" id="shop">
       <h1 class="heading">Nuestros <span> productos </span></h1>
 
-      <div class="box-container">
-        <div class="box">
-          <div class="icons">
-            <a href="#" class="fas fa-shopping-cart"></a>
-            <a href="#" class="fas fa-heart"></a>
-            <a href="#" class="fas fa-eye"></a>
-          </div>
-          <div class="image">
-            <img src="{% static 'image/product_01.jpg' %}" alt="" />
-          </div>
-          <div class="content">
-            <h3>Snacks para perro</h3>
-            <div class="amount">$15.000 - $30.000</div>
-          </div>
-        </div>
+      <div class="box-container">        
+        {% for product in products %}
+            <div class="box">
+            <div class="icons">
+                <a href="#" class="fas fa-shopping-cart"></a>
+                <a href="#" class="fas fa-heart"></a>
+                <a href="#" class="fas fa-eye"></a>
+            </div>
+            <div class="image">
+               <img src="{% static 'image/product_02.jpg' %}" alt="" />
+            </div>
+            <div class="content">
+                <h3>{{ product.title }}	</h3>
+                <div class="amount">$ {{ product.price}}</div>
+            </div>
+            </div>
+        {% endfor %}
 
-        <div class="box">
+    <!-- <div class="box">
           <div class="icons">
             <a href="#" class="fas fa-shopping-cart"></a>
             <a href="#" class="fas fa-heart"></a>
@@ -237,7 +241,8 @@
             <h3>Snacks para perro</h3>
             <div class="amount">$15.000 - $30.000</div>
           </div>
-        </div>
+        </div> --> 
+
       </div>
     </section>
 
@@ -399,9 +404,4 @@
       <div class="credit"> created in the <span> 2023 </span> | all rights reserved! </div>
       </div>
     </section>
-
-    <!-- custom js file link  -->
-    <script src="{% static 'js/script.js' %}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-  </body>
-</html>
+{% endblock  %}

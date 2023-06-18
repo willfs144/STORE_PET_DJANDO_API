@@ -16,7 +16,7 @@ class Order(models.Model):
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
     status = models.CharField(max_length=50, choices=choices, 
                                              default=OrderStatus.CREATE)
-    shipping_total = models.DecimalField(default=5, max_digits=8, decimal_places=2)
+    shipping_total = models.DecimalField(default=3000, max_digits=8, decimal_places=2)
     total = models.DecimalField(default=0, max_digits=8, decimal_places=2)
     created_at = models.DateTimeField(auto_now_add=True)
 

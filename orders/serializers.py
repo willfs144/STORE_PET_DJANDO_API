@@ -1,7 +1,8 @@
-from .models import Category
+from .models import Order
 from rest_framework.serializers import ModelSerializer
 
-class CategorySerializer(ModelSerializer):
+
+class OrderSerializers(ModelSerializer):
     class Meta:
-        model = Category
+        model = Order
         fields = '__all__'

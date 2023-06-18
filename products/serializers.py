@@ -1,9 +1,6 @@
 from .models import Product
 
 from rest_framework.serializers import ModelSerializer
-from rest_framework.serializers import (
-    SerializerMethodField
-)
 from categories.serializers import CategorySerializer
 
 class ProductSerializer(ModelSerializer):

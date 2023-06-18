@@ -1,8 +1,6 @@
 from typing import Any, Dict
-from django.shortcuts import render
 
 from products.models import Product
-
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 #Librerias para la API
@@ -32,8 +30,9 @@ class ProductDetailView(DetailView):
 #Listado API
 #@permission_classes((AllowAny, ))
 class ProductListApi(ListAPIView):
-    serializer_class = ProductSerializer
+    serializer_class = ProductSerializer    
     queryset = Product.objects.all().order_by('-id')
+    #queryset = Product.objects.filter(price__gte=20000).order_by('-id')
 
 
 

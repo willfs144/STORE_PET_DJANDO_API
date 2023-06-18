@@ -12,4 +12,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('productos/', include('products.urls')),
     path('categorias/', include('categories.urls'))
+    #path('orden/', include('or.urls'))
 ]

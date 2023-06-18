@@ -1,7 +1,5 @@
 from django.shortcuts import render
-
 from categories.models import Category
-
 from rest_framework.generics import (ListAPIView)
 
 from .serializers import CategorySerializer

@@ -6,17 +6,19 @@ from django.conf.urls.static import static
 from . import views
 from products.views import ProductListView
 
-#from dj_rest_auth.registration.views import RegisterView
+from dj_rest_auth.registration.views import RegisterView
 
 
-urlpatterns = [
-    path('',ProductListView.as_view(), name='index'),
+urlpatterns = [    
+    path('', views.index, name='index' ),
+    #path('',ProductListView.as_view(), name='index'),   
     path('admin/', admin.site.urls),
     path('productos/', include('products.urls')),
     path('categorias/', include('categories.urls')),
     path('ordenes/', include('orders.urls')), 
+    path('accounts/', include('allauth.urls')),
     path('dj-rest-auth/', include('dj_rest_auth.urls')),
-    #path('auth/registration/', RegisterView.as_view(), name='rest_register'),
+    path('auth/registration/', RegisterView.as_view(), name='rest_register'),
 ]
 
 if settings.DEBUG:

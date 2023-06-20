@@ -13,6 +13,7 @@ from .serializers import ProductSerializer
 class ProductListView(ListView):
     template_name = 'index.html'
     queryset = Product.objects.all().order_by('-id')
+    
 
     #pasa el contexto de la clase al template
     def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:

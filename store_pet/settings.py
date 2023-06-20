@@ -35,26 +35,24 @@ INSTALLED_APPS = [
     'carts', 
     'orders',   
     'products',
-    'categories',    
+    'categories', 
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',    
     'rest_framework',   
     'rest_framework.authtoken',
     'dj_rest_auth',
-    'dj_rest_auth.registration',
+    'dj_rest_auth.registration',    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites'
 ]
 
-REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.TokenAuthentication',
-    ],
-}
-#No verifica el correo
-ACCOUNT_EMAIL_VERIFICATION = 'none'
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -132,16 +130,37 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
+# PERMITE ACCEDER A ARCHIVOS ESTATICOS CSS, JS, IMAGEN
 STATIC_URL = 'static/'
 
 STATICFILES_DIRS= [
     BASE_DIR / "static"
 ]
 
+#GUARDA LAS IMAGENES EN CARPETA 
 MEDIA_URL ='/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+#AUTENTICACION CON API 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+}
+#No verifica el correo
+ACCOUNT_EMAIL_VERIFICATION = 'none'
 
+#AUTENTICACION USUARIOS:
+SITE_ID = 1
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+#ACCOUNT_EMAIL_REQUIRED = True
+#ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+#ACCOUNT_AUTHENTICATION_METHOD = 'email'
+#ACCOUNT_USERNAME_REQUIRED = False
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

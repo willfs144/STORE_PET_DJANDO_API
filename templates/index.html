@@ -21,22 +21,11 @@
         <div class="fas fa-user" id="login-btn"></div>
       </div>
 
-      <form action="" class="login-form">
+      <form method="post" class="login-form">
+        {% csrf_token %}
         <h3>sign in</h3>
-        <input
-          type="email"
-          name=""
-          placeholder="enter your email"
-          id=""
-          class="box"
-        />
-        <input
-          type="password"
-          name=""
-          placeholder="enter your password"
-          id=""
-          class="box"
-        />
+        <input type="text" name="username" placeholder="Digita usuario: " id="" class="box"/>
+        <input type="password" name="password" placeholder="Digita contraseña: " id="" class="box"/>
         <div class="remember">
           <input type="checkbox" name="" id="remember-me" />
           <label for="remember-me">remember me</label>
@@ -159,7 +148,12 @@
                 <a href="#" class="fas fa-eye"></a>
             </div>
             <div class="image">
-               <img src="{% static 'image/product_02.jpg' %}" alt="" />
+              {% if product.image %}
+                 <img src="{{product.image.url}}" alt="Imagen del producto" />
+              {% else %}
+                  <img src="{% static 'image/footer_background.jpg' %}" alt="Default Image">
+              {% endif %}
+               
             </div>
             <div class="content">
                 <h3>{{ product.title }}	</h3>
@@ -167,82 +161,6 @@
             </div>
             </div>
         {% endfor %}
-
-    <!-- <div class="box">
-          <div class="icons">
-            <a href="#" class="fas fa-shopping-cart"></a>
-            <a href="#" class="fas fa-heart"></a>
-            <a href="#" class="fas fa-eye"></a>
-          </div>
-          <div class="image">
-            <img src="{% static 'image/product_02.jpg' %}" alt="" />
-          </div>
-          <div class="content">
-            <h3>Snacks para perro</h3>
-            <div class="amount">$15.000 - $30.000</div>
-          </div>
-        </div>
-
-        <div class="box">
-          <div class="icons">
-            <a href="#" class="fas fa-shopping-cart"></a>
-            <a href="#" class="fas fa-heart"></a>
-            <a href="#" class="fas fa-eye"></a>
-          </div>
-          <div class="image">
-            <img src="{% static 'image/product_03.jpg' %}" alt="" />
-          </div>
-          <div class="content">
-            <h3>Snacks para perro</h3>
-            <div class="amount">$15.000 - $30.000</div>
-          </div>
-        </div>
-
-        <div class="box">
-          <div class="icons">
-            <a href="#" class="fas fa-shopping-cart"></a>
-            <a href="#" class="fas fa-heart"></a>
-            <a href="#" class="fas fa-eye"></a>
-          </div>
-          <div class="image">
-            <img src="{% static 'image/product_04.jpg' %}" alt="" />
-          </div>
-          <div class="content">
-            <h3>Galletas para perro</h3>
-            <div class="amount">$15.000 - $30.000</div>
-          </div>
-        </div>
-
-        <div class="box">
-          <div class="icons">
-            <a href="#" class="fas fa-shopping-cart"></a>
-            <a href="#" class="fas fa-heart"></a>
-            <a href="#" class="fas fa-eye"></a>
-          </div>
-          <div class="image">
-            <img src="{% static 'image/product_05.jpg' %}" alt="" />
-          </div>
-          <div class="content">
-            <h3>Snacks para gato</h3>
-            <div class="amount">$15.000 - $30.000</div>
-          </div>
-        </div>
-
-        <div class="box">
-          <div class="icons">
-            <a href="#" class="fas fa-shopping-cart"></a>
-            <a href="#" class="fas fa-heart"></a>
-            <a href="#" class="fas fa-eye"></a>
-          </div>
-          <div class="image">
-            <img src="{% static 'image/product_06.jpg' %}" alt="" />
-          </div>
-          <div class="content">
-            <h3>Snacks para perro</h3>
-            <div class="amount">$15.000 - $30.000</div>
-          </div>
-        </div> --> 
-
       </div>
     </section>
 

@@ -1,11 +1,15 @@
 
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import redirect
 
-from products.models import Product
-#from products import views
+from django.contrib import messages
 from django.contrib.auth import login
 from django.contrib.auth import authenticate
+
+from products.models import Product
+
+
+
 
 
 def index(request):
@@ -20,9 +24,10 @@ def index(request):
         user = authenticate(username=username, password=password)
         if user:
             login(request, user)
-            print("Usuario autenticado")
+            messages.success(request, 'Benvenido {} '.format(user.username))
+            return redirect('index')
         else:
-            print("Usuario no autenticado")
+            messages.error(request, 'Usuario o contraseña no validos')
 
   
            

@@ -797,3 +797,9 @@ section {
   }
 }
 /*# sourceMappingURL=style.css.map */
+ .register-box{
+  width: 100%;
+  height: 4rem;
+  font-size: 1.6rem;
+  text-transform: none;
+}

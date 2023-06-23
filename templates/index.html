@@ -2,7 +2,7 @@
 {% load static %}  
 {% block content %}
       <!-- header section starts  -->
-
+ <link rel="stylesheet" href="{% static 'css/style.css' %}" />
     <header class="header">
       <a href="#" class="logo"> <i class="fas fa-paw"></i> Tienda </a>
 
@@ -35,7 +35,19 @@
           <a href="#">forget password</a>
           <a href="#">sign up</a>
         </div>
+
+        
+
       </form>
+      {% if messages %}
+        {% for message in messages%}			
+          <div class="alert {% if message.tags == 'success' %}alert-success{% else %}alert-danger{% endif %} alert-dismissible fade show" role="alert">
+            <button type="button" class="btn-close"data-bs-dismiss="alert" aria-label="Close"></button>
+            {{ message }}
+          </div>				
+        {% endfor%}
+      {% endif %}
+
     </header>
 
     <!-- header section ends -->
@@ -270,6 +282,7 @@
       </div>
 
       <form action="">
+        {% csrf_token %}
         <h3>Contáctanos.</h3>
         <div class="form-floating mb-3">
           <input type="text" placeholder="Nombre: " class="form-control box" />

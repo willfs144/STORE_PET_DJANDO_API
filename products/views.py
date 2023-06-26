@@ -3,9 +3,12 @@ from typing import Any, Dict
 from products.models import Product
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
+from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin # solicita validaccion para acceder al api
+
+from rest_framework.decorators import permission_classes
 #Librerias para la API
 from rest_framework.generics import (CreateAPIView, RetrieveUpdateAPIView, UpdateAPIView,
-    ListAPIView, RetrieveUpdateDestroyAPIView, DestroyAPIView)
+    ListAPIView, RetrieveUpdateDestroyAPIView, DestroyAPIView, RetrieveDestroyAPIView, RetrieveAPIView)
 
 from .serializers import ProductSerializer
 
@@ -30,10 +33,31 @@ class ProductDetailView(DetailView):
 
 #Listado API
 #@permission_classes((AllowAny, ))
-class ProductListApi(ListAPIView):
-    serializer_class = ProductSerializer    
+class ProductListAPI(ListAPIView):  
     queryset = Product.objects.all().order_by('-id')
-    #queryset = Product.objects.filter(price__gte=20000).order_by('-id')
+    serializer_class = ProductSerializer    
+
+class ProductUpdateAPI(RetrieveUpdateAPIView):     
+     #queryset = Product.objects.filter(price__gte=20000).order_by('-id') 
+     queryset = Product.objects.all().order_by('-id')
+     serializer_class = ProductSerializer 
+
+class ProductCreateAPI(CreateAPIView):     
+    queryset =  Product.objects.all()
+    serializer_class = ProductSerializer
+
+class ProductDetailAPI(RetrieveAPIView):
+    queryset =  Product.objects.all()
+    serializer_class = ProductSerializer
+
+class ProductDeleteAPI(RetrieveDestroyAPIView):
+    queryset =  Product.objects.all()
+    serializer_class = ProductSerializer
+
+
+
+
+
 
 
 

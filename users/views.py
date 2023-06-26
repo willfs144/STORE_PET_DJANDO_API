@@ -5,6 +5,11 @@ from django.contrib.auth import logout
 from django.contrib.auth.models import User
 from django.contrib.auth import login
 from .forms import RegisterForm
+from .serializers import UserSerializer
+
+#Librerias para la API
+from rest_framework.generics import (CreateAPIView, RetrieveUpdateAPIView, UpdateAPIView,
+    ListAPIView, RetrieveUpdateDestroyAPIView, DestroyAPIView, RetrieveDestroyAPIView, RetrieveAPIView)
 
 def logout_view(request):
     logout(request)
@@ -29,3 +34,7 @@ def register(request):
         'form': form
     })
 
+#Seccion API
+class UserListAPI(ListAPIView):  
+    queryset = User.objects.all().order_by('-id')
+    serializer_class = UserSerializer    

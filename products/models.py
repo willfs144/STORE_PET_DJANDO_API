@@ -12,7 +12,7 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=8, decimal_places=2, default=0.0)#
     stock = models.IntegerField()
     categoria = models.ForeignKey(Category, on_delete=models.CASCADE)
-    slug = models.SlugField(null=False, blank=False, unique=True)
+    slug = models.SlugField(null=False, blank=False, unique=True)#enpoind search
     image = models.ImageField(upload_to='products/', null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 

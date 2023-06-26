@@ -28,9 +28,10 @@ def index(request):
             return redirect('index')
         else:
             messages.error(request, 'Usuario o contraseña no validos')
+        
+    return productList(request)
 
-  
-           
+def productList(request):
     products = Product.objects.all().order_by('-id')
     
     return render(request, 'index.html', {
@@ -40,6 +41,10 @@ def index(request):
 		 'products': products
          
     })
+
+  
+           
+  
 
 
   

@@ -146,6 +146,9 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication',
     ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',
+    ]
 }
 #No verifica el correo
 ACCOUNT_EMAIL_VERIFICATION = 'none'
@@ -157,6 +160,8 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
+
+
 #ACCOUNT_EMAIL_REQUIRED = True
 #ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 #ACCOUNT_AUTHENTICATION_METHOD = 'email'

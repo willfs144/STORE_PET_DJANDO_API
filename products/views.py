@@ -12,6 +12,11 @@ from rest_framework.generics import (CreateAPIView, RetrieveUpdateAPIView, Updat
 
 from .serializers import ProductSerializer
 
+from rest_framework.permissions import AllowAny
+
+# solicita validaccion para acceder al api
+from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin
+
 # Create your views here.
 class ProductListView(ListView):
     template_name = 'index.html'
@@ -32,7 +37,7 @@ class ProductDetailView(DetailView):
 
 
 #Listado API
-#@permission_classes((AllowAny, ))
+@permission_classes((AllowAny, ))
 class ProductListAPI(ListAPIView):  
     queryset = Product.objects.all().order_by('-id')
     serializer_class = ProductSerializer    
@@ -50,7 +55,7 @@ class ProductDetailAPI(RetrieveAPIView):
     queryset =  Product.objects.all()
     serializer_class = ProductSerializer
 
-class ProductDeleteAPI(RetrieveDestroyAPIView):
+class ProductDeleteAPI(LoginRequiredMixin, RetrieveDestroyAPIView):
     queryset =  Product.objects.all()
     serializer_class = ProductSerializer
 

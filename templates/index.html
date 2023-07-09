@@ -42,7 +42,7 @@
       {% if messages %}
         {% for message in messages%}			
           <div class="alert {% if message.tags == 'success' %}alert-success{% else %}alert-danger{% endif %} alert-dismissible fade show" role="alert">
-            <button type="button" class="btn-close"data-bs-dismiss="alert" aria-label="Close"></button>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             {{ message }}
           </div>				
         {% endfor%}
@@ -135,8 +135,7 @@
 					{% for product in products %}
 						<li class="list-group-item">
 							{{ product.title }}						
-							
-                            <span class="text-success">$ {{ product.price}}</span>
+							<span class="text-success">$ {{ product.price}}</span>
 						</li>
 					{% endfor %}
 				</ul>			
@@ -154,23 +153,23 @@
       <div class="box-container">        
         {% for product in products %}
             <div class="box">
-            <div class="icons">
-                <a href="#" class="fas fa-shopping-cart"></a>
-                <a href="#" class="fas fa-heart"></a>
-                <a href="#" class="fas fa-eye"></a>
-            </div>
-            <div class="image">
-              {% if product.image %}
-                 <img src="{{product.image.url}}" alt="Imagen del producto" />
-              {% else %}
-                  <img src="{% static 'image/footer_background.jpg' %}" alt="Default Image">
-              {% endif %}
-               
-            </div>
-            <div class="content">
-                <h3>{{ product.title }}	</h3>
-                <div class="amount">$ {{ product.price}}</div>
-            </div>
+              <div class="icons">
+                  <a href="#" class="fas fa-shopping-cart"></a>
+                  <a href="#" class="fas fa-heart"></a>
+                  <a href="#" class="fas fa-eye"></a>
+              </div>
+              <div class="image">
+                {% if product.image %}
+                  <img src="{{product.image.url}}" alt="Imagen del producto" />
+                {% else %}
+                    <img src="{% static 'image/footer_background.jpg' %}" alt="Default Image">
+                {% endif %}
+                
+              </div>
+              <div class="content">
+                  <h3>{{ product.title }}	</h3>
+                  <div class="amount">$ {{ product.price}}</div>
+              </div>
             </div>
         {% endfor %}
       </div>

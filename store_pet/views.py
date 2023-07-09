@@ -9,9 +9,6 @@ from django.contrib.auth import authenticate
 from products.models import Product
 
 
-
-
-
 def index(request):
 
     if request.method == 'POST':

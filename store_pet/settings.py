@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'rest_framework',   
     'rest_framework.authtoken',
     'dj_rest_auth',
-    'dj_rest_auth.registration',    
+    'dj_rest_auth.registration',
+    'corsheaders',    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -55,6 +56,7 @@ INSTALLED_APPS = [
 
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -65,7 +67,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'store_pet.urls'
-
+CORS_ORIGIN_ALLOW_ALL = True
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',

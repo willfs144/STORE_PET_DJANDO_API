@@ -151,26 +151,10 @@
       <h1 class="heading">Nuestros <span> productos </span></h1>
 
       <div class="box-container">        
-        {% for product in products %}
-            <div class="box">
-              <div class="icons">
-                  <a href="#" class="fas fa-shopping-cart"></a>
-                  <a href="#" class="fas fa-heart"></a>
-                  <a href="#" class="fas fa-eye"></a>
-              </div>
-              <div class="image">
-                {% if product.image %}
-                  <img src="{{product.image.url}}" alt="Imagen del producto" />
-                {% else %}
-                    <img src="{% static 'image/footer_background.jpg' %}" alt="Default Image">
-                {% endif %}
-                
-              </div>
-              <div class="content">
-                  <h3>{{ product.title }}	</h3>
-                  <div class="amount">$ {{ product.price}}</div>
-              </div>
-            </div>
+        {% for object in products %}
+
+            {% include 'products/snippets/product.html' with product=object %}
+
         {% endfor %}
       </div>
     </section>

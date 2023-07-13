@@ -9,7 +9,7 @@ from categories.models import Category
 class Product(models.Model):
     title = models.CharField(max_length=50)
     description = models.TextField()
-    price = models.DecimalField(max_digits=8, decimal_places=2, default=0.0)#
+    price = models.DecimalField(max_digits=8, decimal_places=0, default=0)#
     stock = models.IntegerField()
     categoria = models.ForeignKey(Category, on_delete=models.CASCADE)
     slug = models.SlugField(null=False, blank=False, unique=True)#enpoind search
